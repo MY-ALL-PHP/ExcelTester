@@ -1,8 +1,13 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-require_once 'excel_reader.php';
-$data = new Spreadsheet_Excel_Reader("example1.xls");
+if ($_FILES){
+	$name = $_FILES['filename']['name'];
+	move_uploaded_file($_FILES['filename']['tmp_name'], $name);
+	require_once 'excel_reader.php';
+	$data = new Spreadsheet_Excel_Reader("$name");
+}
 ?>
+
 <html>
 <head>
 <style>
@@ -35,6 +40,15 @@ table.excel tbody td {
 </head>
 
 <body>
-<?php echo $data->dump(true,true); ?>
+	<form method='post' action='index.php' enctype='multipart/form-data'>
+	Select File: <input type='file' name='filename' size='10' />
+	<input type='submit' value='Upload' />
+	</form>
+
+	<?php
+	if (!empty($data)){
+		echo $data->dump(true,true);
+	}
+	?>
 </body>
 </html>
