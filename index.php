@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-require_once 'excel_reader2.php';
+require_once 'excel_reader.php';
 $data = new Spreadsheet_Excel_Reader("example1.xls");
 ?>
 <html>
