@@ -312,9 +312,6 @@ define('SPREADSHEET_EXCEL_READER_DEF_NUM_FORMAT',	"%s");
 
 
 
-
-
-
 /*
 * Main Class
 */
@@ -1607,7 +1604,6 @@ class Spreadsheet_Excel_Reader {
 			$xfindex = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
 			$xfrecord = $this->xfRecords[$xfindex];
 			$type = $xfrecord['type'];
-
 			$format = $xfrecord['format'];
 			$formatIndex = $xfrecord['formatIndex'];
 			$fontIndex = $xfrecord['fontIndex'];
@@ -1648,6 +1644,10 @@ class Spreadsheet_Excel_Reader {
 					$format = $this->_defaultFormat;
 				}
 				$rectype = 'unknown';
+
+				//-- Edit Subrat
+				echo "Unable to find a data format that your excel sheet contains .. try with character or string forat.."; exit;
+
 				$formatted = $this->_format_value($format, $numValue, $formatIndex);
 				$string = $formatted['string'];
 				$formatColor = $formatted['formatColor'];
