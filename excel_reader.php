@@ -589,7 +589,7 @@ class Spreadsheet_Excel_Reader {
 	
 	// DUMP AN HTML TABLE OF THE ENTIRE XLS DATA
 	// =========================================
-	function dump($row_numbers=false,$col_letters=false,$sheet=0,$table_class='excel') {
+	function dump($row_numbers=false,$col_letters=false,$sheet=0,$table_class='table-bordered') {
 		$out = "<table class=\"$table_class\" cellspacing=0>";
 		if ($col_letters) {
 			$out .= "<thead>\n\t<tr>";
